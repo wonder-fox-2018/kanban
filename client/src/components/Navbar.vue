@@ -33,7 +33,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" v-on:click="addTask()" >Add Task</button>
+            <button type="button" class="btn btn-success" v-on:click.once="addTask()" >Add Task</button>
           </div>
         </div>
       </div>
@@ -45,6 +45,7 @@
 import db from '../../googlekey.js'
 export default {
   name: 'Navbar',
+  props: ['changestatus'],
   data () {
     return {
       tasktitle: '',
@@ -54,14 +55,16 @@ export default {
   },
   methods: {
     addTask () {
-      // console.log('add task')
-      db.ref('/task/').push({
+      let self = this
+      db.ref('/task/plan').push({
         title: this.tasktitle,
         description: this.taskdescription,
         status: this.taskstatus
       }, (error) => {
         if (!error) {
-          // console.log('okay----')
+          this.$emit('changestatus', true)
+          self.tasktitle = ''
+          self.taskdescription = ''
           // eslint-disable-next-line
           $('#addTaskModal').modal('hide')
         } else {
@@ -69,6 +72,9 @@ export default {
         }
       })
     }
+  },
+  watch: {
+    changestatus (val) {}
   }
 }
 </script>

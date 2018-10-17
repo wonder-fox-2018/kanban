@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar></Navbar>
+    <Navbar v-on:changestatus="getchangestatus"></Navbar>
     <div class="contentCustom">
       <div class="row">
         <div class="col-md-3">
@@ -10,6 +10,9 @@
               <h5 class="card-title">Plan</h5>
             </div>
           </div>
+          <Plantask :changestatus="changestatus"
+                v-on:changestatus="getchangestatus">
+              </Plantask>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
@@ -18,6 +21,10 @@
               <h5 class="card-title">Start</h5>
             </div>
           </div>
+          <Starttask
+            :changestatus="changestatus"
+            v-on:changestatus="getchangestatus"
+          ></Starttask>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
@@ -48,9 +55,21 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
+import Plantask from '@/components/Plantask.vue'
+import Starttask from '@/components/Starttask.vue'
 export default {
+  data () {
+    return {
+      changestatus: false
+    }
+  },
   components: {
-    Navbar
+    Navbar, Plantask, Starttask
+  },
+  methods: {
+    getchangestatus (val) {
+      this.changestatus = val
+    }
   }
 }
 </script>
