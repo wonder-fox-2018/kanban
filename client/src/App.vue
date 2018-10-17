@@ -23,8 +23,8 @@
           </div>
           <Starttask
             :changestatus="changestatus"
-            v-on:changestatus="getchangestatus"
-          ></Starttask>
+            v-on:changestatus="getchangestatus">
+            </Starttask>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
@@ -33,6 +33,10 @@
               <h5 class="card-title">On Progress</h5>
             </div>
           </div>
+          <Onprogress
+          :changestatus="changestatus"
+            v-on:changestatus="getchangestatus">
+          </Onprogress>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
@@ -57,6 +61,7 @@
 import Navbar from '@/components/Navbar.vue'
 import Plantask from '@/components/Plantask.vue'
 import Starttask from '@/components/Starttask.vue'
+import Onprogress from '@/components/Onprogress.vue'
 export default {
   data () {
     return {
@@ -64,7 +69,7 @@ export default {
     }
   },
   components: {
-    Navbar, Plantask, Starttask
+    Navbar, Plantask, Starttask, Onprogress
   },
   methods: {
     getchangestatus (val) {

@@ -21,11 +21,10 @@ export default {
   },
   methods: {
     getallplan () {
-      this.plantask = []
       let self = this
       let obj = {}
       db.ref('/task/plan').on('value', function (snapshot) {
-      //    self.rawtask = snapshot.val()
+        self.plantask = []
         snapshot.forEach(detailsnapshot => {
           obj.taskid = detailsnapshot.key
           obj.taskdetail = detailsnapshot.val()
@@ -47,18 +46,8 @@ export default {
         if (!error) {
           this.$emit('changestatus', true)
           self.getallplan()
-        //   db.ref('/task/plan').once('value', function (snapshot) {
-        //     self.plantask = []
-        //     // console.log(snapshot.val())
-        //     snapshot.forEach(detailsnapshot => {
-        //       obj.taskid = detailsnapshot.key
-        //       obj.taskdetail = detailsnapshot.val()
-        //       self.plantask.push(obj)
-        //       obj = {}
-        //     })
-        //   })
         } else {
-          console.log('ERROR Get Data after change status ', error)
+          console.log('ERROR Get Data after change status to start ', error)
         }
       })
     }
@@ -66,13 +55,14 @@ export default {
   created () {
     // get data from google
     this.getallplan()
-  },
-  watch: {
-    changestatus (val) {
-      this.getallplan()
-      return this.$emit('changestatus', false)
-    }
   }
+//   ,
+//   watch: {
+//     changestatus (val) {
+//       this.getallplan()
+//       return this.$emit('changestatus', false)
+//     }
+//   }
 }
 </script>
 

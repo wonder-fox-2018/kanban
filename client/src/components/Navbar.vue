@@ -49,8 +49,7 @@ export default {
   data () {
     return {
       tasktitle: '',
-      taskdescription: '',
-      taskstatus: 'PLAN'
+      taskdescription: ''
     }
   },
   methods: {
@@ -59,7 +58,7 @@ export default {
       db.ref('/task/plan').push({
         title: this.tasktitle,
         description: this.taskdescription,
-        status: this.taskstatus
+        status: 'PLAN'
       }, (error) => {
         if (!error) {
           this.$emit('changestatus', true)
@@ -72,10 +71,11 @@ export default {
         }
       })
     }
-  },
-  watch: {
-    changestatus (val) {}
   }
+  // ,
+  // watch: {
+  //   changestatus (val) {}
+  // }
 }
 </script>
 
