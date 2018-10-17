@@ -10,9 +10,7 @@
               <h5 class="card-title">Plan</h5>
             </div>
           </div>
-          <Plantask :changestatus="changestatus"
-                v-on:changestatus="getchangestatus">
-              </Plantask>
+          <Plantask></Plantask>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
@@ -21,10 +19,7 @@
               <h5 class="card-title">Start</h5>
             </div>
           </div>
-          <Starttask
-            :changestatus="changestatus"
-            v-on:changestatus="getchangestatus">
-            </Starttask>
+          <Starttask></Starttask>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
@@ -33,10 +28,7 @@
               <h5 class="card-title">On Progress</h5>
             </div>
           </div>
-          <Onprogress
-          :changestatus="changestatus"
-            v-on:changestatus="getchangestatus">
-          </Onprogress>
+          <Onprogress></Onprogress>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
@@ -45,6 +37,7 @@
               <h5 class="card-title">Finish</h5>
             </div>
           </div>
+          <Finished></Finished>
         </div>
       </div>
     </div>
@@ -62,6 +55,7 @@ import Navbar from '@/components/Navbar.vue'
 import Plantask from '@/components/Plantask.vue'
 import Starttask from '@/components/Starttask.vue'
 import Onprogress from '@/components/Onprogress.vue'
+import Finished from '@/components/Finished.vue'
 export default {
   data () {
     return {
@@ -69,7 +63,7 @@ export default {
     }
   },
   components: {
-    Navbar, Plantask, Starttask, Onprogress
+    Navbar, Plantask, Starttask, Onprogress, Finished
   },
   methods: {
     getchangestatus (val) {

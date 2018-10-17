@@ -45,7 +45,6 @@
 import db from '../../googlekey.js'
 export default {
   name: 'Navbar',
-  props: ['changestatus'],
   data () {
     return {
       tasktitle: '',
@@ -72,10 +71,6 @@ export default {
       })
     }
   }
-  // ,
-  // watch: {
-  //   changestatus (val) {}
-  // }
 }
 </script>
 

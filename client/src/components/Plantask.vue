@@ -56,13 +56,6 @@ export default {
     // get data from google
     this.getallplan()
   }
-//   ,
-//   watch: {
-//     changestatus (val) {
-//       this.getallplan()
-//       return this.$emit('changestatus', false)
-//     }
-//   }
 }
 </script>
 

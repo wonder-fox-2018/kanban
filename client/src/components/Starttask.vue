@@ -71,14 +71,6 @@ export default {
   created () {
     this.getallstart()
   }
-//   ,
-//   watch: {
-//     changestatus (val) {
-//       console.log('Start task watch -----', val)
-//       this.getallstart()
-//       return this.$emit('changestatus', false)
-//     }
-//   }
 }
 </script>
 

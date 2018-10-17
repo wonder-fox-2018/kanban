@@ -14,7 +14,6 @@
 import db from '../../googlekey.js'
 export default {
   name: 'Onprogress',
-  props: ['changestatus'],
   data () {
     return {
       onprogresstask: []
@@ -70,13 +69,6 @@ export default {
   created () {
     this.getallonprogress()
   }
-//   ,
-//   watch: {
-//     changestatus (val) {
-//       this.getallonprogress()
-//       return this.$emit('changestatus', true)
-//     }
-//   }
 }
 </script>
 
