@@ -80,7 +80,7 @@ export default {
         }, 3000)
         // put reload due to we can't add two new task in series
         // without refresh
-        // location.reload()
+        location.reload()
       } else {
         let self = this
         db.ref('/task/plan').push({
@@ -97,7 +97,7 @@ export default {
             $('#addTaskModal').modal('hide')
             // put reload due to we can't add two new task in series
             // without refresh
-            // location.reload()
+            location.reload()
           } else {
             console.log('ERROR Add Task to Firebase: ', error)
           }
