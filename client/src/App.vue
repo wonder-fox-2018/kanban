@@ -81,10 +81,6 @@
 <script>
 import db from '../googlekey.js'
 import Navbar from '@/components/Navbar.vue'
-// import Plantask from '@/components/Plantask.vue'
-// import Starttask from '@/components/Starttask.vue'
-// import Onprogress from '@/components/Onprogress.vue'
-// import Finished from '@/components/Finished.vue'
 import Task from '@/components/Task.vue'
 export default {
   data () {
