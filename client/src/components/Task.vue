@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     getalltask () {
-    //   console.log('OK GET DATA LAGI')
       let self = this
       let obj = {}
       db.ref(`/task/${this.statusobject.status}`).on('value', function (snapshot) {
@@ -57,9 +56,7 @@ export default {
       this.$emit('updatedlistfinish', this.updatedlisttask)
     },
     changebackward (taskid, taskdetail) {
-      // console.log('Backward-----', taskid, taskdetail)
       if (this.statusobject.status === 'start') {
-        // console.log('STATUS-----', this.statusobject.status)
         this.updatedlisttask = []
         let self = this
         // delete and insert new to google firebase
@@ -78,7 +75,6 @@ export default {
           }
         })
       } else if (this.statusobject.status === 'onprogress') {
-        // console.log('STATUS-----', this.statusobject.status)
         this.updatedlisttask = []
         let self = this
         // delete and insert new to google firebase
@@ -97,7 +93,6 @@ export default {
           }
         })
       } else if (this.statusobject.status === 'finish') {
-        // console.log('STATUS-----', this.statusobject.status)
         this.updatedlisttask = []
         let self = this
         // delete and insert new to google firebase
@@ -118,9 +113,7 @@ export default {
       }
     },
     changeforward (taskid, taskdetail) {
-      // console.log('Forward-----', taskid, taskdetail)
       if (this.statusobject.status === 'plan') {
-        // console.log('STATUS-----', this.statusobject.status)
         this.updatedlisttask = []
         let self = this
         // delete and insert new to google firebase
@@ -139,7 +132,6 @@ export default {
           }
         })
       } else if (this.statusobject.status === 'start') {
-        // console.log('STATUS-----', this.statusobject.status)
         this.updatedlisttask = []
         let self = this
         // delete and insert new to google firebase
@@ -158,7 +150,6 @@ export default {
           }
         })
       } else if (this.statusobject.status === 'onprogress') {
-        // console.log('STATUS-----', this.statusobject.status)
         this.updatedlisttask = []
         let self = this
         // delete and insert new to google firebase
@@ -187,7 +178,6 @@ export default {
     listtask (val) {
       this.updatedlisttask = []
       this.updatedlisttask = val
-      // console.log('test list task----', val)
     },
     detailtitle (val) {},
     detaildescription (val) {},

@@ -111,7 +111,6 @@ export default {
     }
   },
   components: {
-    // Navbar, Plantask, Starttask, Onprogress, Finished, Task
     Navbar, Task
   },
   methods: {
@@ -121,7 +120,6 @@ export default {
       db.ref('/task/plan').on('value', function (snapshot) {
         self.listplantask = []
         let obj = {}
-        // console.log('plan-----', snapshot.val())
         snapshot.forEach(detailsnapshot => {
           obj.taskid = detailsnapshot.key
           obj.taskdetail = detailsnapshot.val()
@@ -134,7 +132,6 @@ export default {
       db.ref('/task/start').on('value', function (snapshot) {
         self.liststarttask = []
         let obj = {}
-        // console.log('start----', snapshot.val())
         snapshot.forEach(detailsnapshot => {
           obj.taskid = detailsnapshot.key
           obj.taskdetail = detailsnapshot.val()
@@ -147,7 +144,6 @@ export default {
       db.ref('/task/onprogress').on('value', function (snapshot) {
         self.listonprogresstask = []
         let obj = {}
-        // console.log('on progress----', snapshot.val())
         snapshot.forEach(detailsnapshot => {
           obj.taskid = detailsnapshot.key
           obj.taskdetail = detailsnapshot.val()
@@ -160,7 +156,6 @@ export default {
       db.ref('/task/finish').on('value', function (snapshot) {
         self.listfinishtask = []
         let obj = {}
-        // console.log('finish----', snapshot.val())
         snapshot.forEach(detailsnapshot => {
           obj.taskid = detailsnapshot.key
           obj.taskdetail = detailsnapshot.val()
@@ -171,22 +166,18 @@ export default {
     },
     getupdatedlistplan (val) {
       this.listplantask = []
-      // console.log('PLAN STATUS updated---', val)
       this.listplantask = val
     },
     getupdatedliststart (val) {
       this.liststarttask = []
-      // console.log('PLAN STATUS updated---', val)
       this.liststarttask = val
     },
     getupdatedlistonprogress (val) {
       this.listonprogresstask = []
-      // console.log('ON PROGRESS STATUS updated', val)
       this.listonprogresstask = val
     },
     getupdatedlistfinish (val) {
       this.listfinishtask = []
-      // console.log('ON PROGRESS STATUS updated', val)
       this.listfinishtask = val
     },
     getdetaildata (val) {
