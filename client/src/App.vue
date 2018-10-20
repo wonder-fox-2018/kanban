@@ -3,10 +3,17 @@
     <Navbar></Navbar>
     <div class="contentCustom">
       <div class="row">
+        <div class="col-md-12">
+           <h1>Detail Information</h1>
+        </div>
+        <div class="col-md-12">
+           <div id="detaildatasection"></div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
               <h5 class="card-title">Plan</h5>
             </div>
           </div>
@@ -15,12 +22,12 @@
           -->
           <Task :listtask="listplantask"
             :statusobject="planobject"
-            @updatedlistplan="getupdatedlistplan"></Task>
+            @updatedlistplan="getupdatedlistplan"
+            @detaildata="getdetaildata" ></Task>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
               <h5 class="card-title">Start</h5>
             </div>
           </div>
@@ -29,12 +36,12 @@
           -->
           <Task :listtask="liststarttask"
             :statusobject="startobject"
-            @updatedliststart="getupdatedliststart"></Task>
+            @updatedliststart="getupdatedliststart"
+            @detaildata="getdetaildata"></Task>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
               <h5 class="card-title">On Progress</h5>
             </div>
           </div>
@@ -43,12 +50,12 @@
           -->
           <Task :listtask="listonprogresstask"
             :statusobject="onprogressobject"
-            @updatedlistonprogress="getupdatedlistonprogress"></Task>
+            @updatedlistonprogress="getupdatedlistonprogress"
+            @detaildata="getdetaildata"></Task>
         </div>
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
               <h5 class="card-title">Finish</h5>
             </div>
           </div>
@@ -57,7 +64,8 @@
           -->
           <Task :listtask="listfinishtask"
             :statusobject="finishobject"
-            @updatedlistfinish="getupdatedlistfinish"></Task>
+            @updatedlistfinish="getupdatedlistfinish"
+            @detaildata="getdetaildata"></Task>
         </div>
       </div>
     </div>
@@ -102,7 +110,8 @@ export default {
       finishobject: {
         status: 'finish',
         backwardbutton: 'On Progress'
-      }
+      },
+      detaildata: {}
     }
   },
   components: {
@@ -183,6 +192,9 @@ export default {
       this.listfinishtask = []
       // console.log('ON PROGRESS STATUS updated', val)
       this.listfinishtask = val
+    },
+    getdetaildata (val) {
+      this.detaildata = val
     }
   },
   created () {
@@ -192,7 +204,26 @@ export default {
     listplantask (val) {},
     liststarttask (val) {},
     listonprogresstask (val) {},
-    listfinishtask (val) {}
+    listfinishtask (val) {},
+    detaildata (val) {
+      /* eslint-disable-next-line */
+      $('#detaildatasection').empty()
+      /* eslint-disable-next-line */
+      $('#detaildatasection').append(
+        `<h1>Detail information</h1>
+        <hr>
+        <b>Title: </b> <p>${this.detaildata.title}</p>
+        <br>
+        <b>Description: </b> <p>${this.detaildata.description}</p>
+        <br>
+        <b>Point: </b> <p>${this.detaildata.point}</p>
+        `
+      )
+      setTimeout(() => {
+        /* eslint-disable-next-line */
+        $('#detaildatasection').empty()
+      }, 5000)
+    }
   }
 }
 </script>
