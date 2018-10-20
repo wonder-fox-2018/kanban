@@ -14,7 +14,6 @@
 import db from '../../googlekey.js'
 export default {
   name: 'Starttask',
-  props: ['changestatus'],
   data () {
     return {
       starttask: []

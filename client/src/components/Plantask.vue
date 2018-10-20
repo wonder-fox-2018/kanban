@@ -13,7 +13,6 @@
 import db from '../../googlekey.js'
 export default {
   name: 'Plantask',
-  props: ['changestatus'],
   data () {
     return {
       plantask: []

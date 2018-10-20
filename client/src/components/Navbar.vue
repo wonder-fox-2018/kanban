@@ -28,8 +28,13 @@
           <div class="modal-body">
              <label for="exampleInputEmail1">Title</label>
              <input v-model="tasktitle" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Title">
+             <br>
              <label for="exampleInputEmail1">Description</label>
-             <input v-model="taskdescription" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Description">
+             <textarea v-model="taskdescription" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Description">
+             </textarea>
+             <br>
+             <label for="exampleInputEmail1">Point</label>
+             <input v-model="taskpoint" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Point">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -48,23 +53,28 @@ export default {
   data () {
     return {
       tasktitle: '',
-      taskdescription: ''
+      taskdescription: '',
+      taskpoint: ''
     }
   },
   methods: {
     addTask () {
       let self = this
       db.ref('/task/plan').push({
-        title: this.tasktitle,
-        description: this.taskdescription,
+        title: self.tasktitle,
+        description: self.taskdescription,
+        point: self.taskpoint,
         status: 'PLAN'
       }, (error) => {
         if (!error) {
-          this.$emit('changestatus', true)
           self.tasktitle = ''
           self.taskdescription = ''
+          self.taskpoint = ''
           // eslint-disable-next-line
           $('#addTaskModal').modal('hide')
+          // put reload due to we can't add two new task in series
+          // without refresh
+          location.reload()
         } else {
           console.log('ERROR Add Task to Firebase: ', error)
         }

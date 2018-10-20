@@ -33,6 +33,7 @@ export default {
       })
     },
     changebackward (taskid, taskdetail) {
+      let self = this
       db.ref(`/task/finish/${taskid}`).remove()
       db.ref('/task/onprogress').push({
         title: taskdetail.title,
