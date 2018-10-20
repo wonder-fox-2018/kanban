@@ -3,7 +3,6 @@
         <div v-for="(task,index) in updatedlisttask" :key="index" class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">{{ task.taskdetail.title }}</h5>
-                <p class="card-text">{{ task.taskdetail.description }}</p>
                 <button class="btn btn-danger"
                     v-if= "statusobject.status === 'start' || statusobject.status === 'onprogress' || statusobject.status === 'finish'"
                     v-on:click= "changebackward(task.taskid, task.taskdetail)" > {{ statusobject.backwardbutton }}</button>

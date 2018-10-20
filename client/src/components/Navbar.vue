@@ -25,6 +25,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <div id="errortask">
+          </div>
           <div class="modal-body">
              <label for="exampleInputEmail1">Title</label>
              <input v-model="tasktitle" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Title">
@@ -54,31 +56,53 @@ export default {
     return {
       tasktitle: '',
       taskdescription: '',
-      taskpoint: ''
+      taskpoint: '',
+      error: ''
     }
   },
   methods: {
     addTask () {
-      let self = this
-      db.ref('/task/plan').push({
-        title: self.tasktitle,
-        description: self.taskdescription,
-        point: self.taskpoint,
-        status: 'PLAN'
-      }, (error) => {
-        if (!error) {
-          self.tasktitle = ''
-          self.taskdescription = ''
-          self.taskpoint = ''
-          // eslint-disable-next-line
-          $('#addTaskModal').modal('hide')
-          // put reload due to we can't add two new task in series
-          // without refresh
-          location.reload()
-        } else {
-          console.log('ERROR Add Task to Firebase: ', error)
-        }
-      })
+      // validation
+      if (this.tasktitle === '' || this.taskdescription === '' || this.taskpoint === '') {
+        // empty all the fields immediately
+        this.tasktitle = ''
+        this.taskdescription = ''
+        this.taskpoint = ''
+        /* eslint-disable-next-line */
+        $('#errortask').empty()
+        /* eslint-disable-next-line */
+        $('#errortask').append(
+          `<button type="button" class="btn btn-danger">All fields must not be empty!</button>`
+        )
+        setTimeout(() => {
+          /* eslint-disable-next-line */
+          $('#errortask').empty()
+        }, 3000)
+        // put reload due to we can't add two new task in series
+        // without refresh
+        // location.reload()
+      } else {
+        let self = this
+        db.ref('/task/plan').push({
+          title: self.tasktitle,
+          description: self.taskdescription,
+          point: self.taskpoint,
+          status: 'PLAN'
+        }, (error) => {
+          if (!error) {
+            self.tasktitle = ''
+            self.taskdescription = ''
+            self.taskpoint = ''
+            // eslint-disable-next-line
+            $('#addTaskModal').modal('hide')
+            // put reload due to we can't add two new task in series
+            // without refresh
+            // location.reload()
+          } else {
+            console.log('ERROR Add Task to Firebase: ', error)
+          }
+        })
+      }
     }
   }
 }
