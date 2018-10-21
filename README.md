@@ -26,4 +26,4 @@ yarn run lint
 
 ### Link Firebase
 
-https://kanban-74e11.firebaseapp.com/#/
+https://kanban-665ac.firebaseapp.com/
