@@ -58,7 +58,12 @@ export default {
           description: this.description,
           point: this.point,
           assigned_to: this.assignedTo
-        });
+        })
+
+        this.name = '';
+        this.description = '';
+        this.point = '';
+        this.assignedTo = '';
       }
     }
 }

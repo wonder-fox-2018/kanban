@@ -10,12 +10,12 @@
             </div>
             <ul class="list-group list-group-flush option">
                 <button class="btn btn-outline-primary" v-if="task.status !== 'backlog'" @click="moveToPrevStatus">
-                    {{prevStatus}}
+                    Move to {{prevStatus}}
                 </button>
                 <button class="btn btn-outline-primary" v-if="task.status !== 'done'" @click="moveToNextStatus">
-                    {{nextStatus}}
+                    Move to {{nextStatus}}
                 </button>
-                <button class="btn btn-outline-primary" @click="removeTask">
+                <button class="btn btn-outline-danger" @click="removeTask">
                     Remove
                 </button>
             </ul>
