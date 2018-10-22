@@ -9,8 +9,10 @@
     "watch": "vue-cli-service serve --max-old-space-size=1500 --watch --recursive 'src/main.js'"
   },
   "dependencies": {
+    "cli": "^1.0.1",
     "firebase": "^5.5.5",
     "moment": "^2.22.2",
+    "tools": "0.0.0",
     "vue": "^2.5.17"
   },
   "devDependencies": {
