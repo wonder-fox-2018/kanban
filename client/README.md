@@ -1,4 +1,5 @@
-# client
+# Deploy
+https://my-simple-kanban.firebaseapp.com/
 
 ## Project setup
 ```
