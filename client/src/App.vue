@@ -3,23 +3,14 @@
     <Navbar></Navbar>
     <div class="contentCustom">
       <div class="row">
-        <div class="col-md-12">
-           <h1>Detail Information</h1>
-        </div>
-        <div class="col-md-12">
-           <div id="detaildatasection"></div>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
+              <br>
+              <br>
               <h5 class="card-title">Plan</h5>
             </div>
           </div>
-          <!--
-          <Plantask></Plantask>
-          -->
           <Task :listtask="listplantask"
             :statusobject="planobject"
             @updatedlistplan="getupdatedlistplan"
@@ -28,12 +19,11 @@
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
+              <br>
+              <br>
               <h5 class="card-title">Start</h5>
             </div>
           </div>
-          <!--
-          <Starttask></Starttask>
-          -->
           <Task :listtask="liststarttask"
             :statusobject="startobject"
             @updatedliststart="getupdatedliststart"
@@ -42,12 +32,11 @@
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
+              <br>
+              <br>
               <h5 class="card-title">On Progress</h5>
             </div>
           </div>
-          <!--
-          <Onprogress></Onprogress>
-          -->
           <Task :listtask="listonprogresstask"
             :statusobject="onprogressobject"
             @updatedlistonprogress="getupdatedlistonprogress"
@@ -56,18 +45,18 @@
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
+              <br>
+              <br>
               <h5 class="card-title">Finish</h5>
             </div>
           </div>
-          <!--
-          <Finished></Finished>
-          -->
           <Task :listtask="listfinishtask"
             :statusobject="finishobject"
             @updatedlistfinish="getupdatedlistfinish"
             @detaildata="getdetaildata"></Task>
         </div>
       </div>
+      <Detailmodal :detaildata="detaildata" ></Detailmodal>
     </div>
     <!--
     <div id="nav">
@@ -82,6 +71,7 @@
 import db from '../googlekey.js'
 import Navbar from '@/components/Navbar.vue'
 import Task from '@/components/Task.vue'
+import Detailmodal from '@/components/Detailmodal.vue'
 export default {
   data () {
     return {
@@ -111,7 +101,7 @@ export default {
     }
   },
   components: {
-    Navbar, Task
+    Navbar, Task, Detailmodal
   },
   methods: {
     getlisttask () {

@@ -40,7 +40,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" v-on:click.once="addTask()" >Add Task</button>
+            <button type="button" class="btn btn-success" v-on:click="addTask()" >Add Task</button>
           </div>
         </div>
       </div>

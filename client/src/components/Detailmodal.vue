@@ -7,19 +7,18 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Detail Task</h5>
                     </div>
-                    {{ detailid }}
                     <div class="modal-body">
                         <label for="exampleInputEmail1"><h3>Title</h3></label>
                         <br>
-                        <label aria-describedby="emailHelp"></label>
+                        <label aria-describedby="emailHelp">{{ detaildata.title }}</label>
                         <hr>
                         <label for="exampleInputEmail1"><h3>Description</h3></label>
                         <br>
-                        <label aria-describedby="emailHelp"></label>
+                        <label aria-describedby="emailHelp">{{ detaildata.description }}</label>
                         <hr>
                         <label for="exampleInputEmail1"><h3>Point</h3></label>
                         <br>
-                        <label aria-describedby="emailHelp"></label>
+                        <label aria-describedby="emailHelp">{{ detaildata.point }}</label>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
@@ -32,25 +31,25 @@
 </template>
 
 <script>
-import db from '../../googlekey.js'
+// import db from '../../googlekey.js'
 export default {
   name: 'Detailmodal',
-  props: ['detailid', 'detailstatus'],
-  data () {
-    return {
-      detaildata: {}
-    }
-  },
-  watch: {
-    detailid (val) {
-      let self = this
-      db.ref(`/task/${self.detailstatus}/${self.detailid}`).on('value', function (snapshot) {
-        self.detaildata = snapshot.val()
-        console.log('Detail data -------------', self.detaildata)
-      })
-    },
-    detaildata (val) {}
-  }
+  props: ['detaildata']
+//   data () {
+//     return {
+//       detaildata: {}
+//     }
+//   },
+//   watch: {
+//     detailid (val) {
+//       let self = this
+//       db.ref(`/task/${self.detailstatus}/${self.detailid}`).on('value', function (snapshot) {
+//         self.detaildata = snapshot.val()
+//         console.log('Detail data -------------', self.detaildata)
+//       })
+//     },
+//     detaildata (val) {}
+//   }
 }
 </script>
 

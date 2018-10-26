@@ -8,6 +8,7 @@
                     v-if= "statusobject.status === 'start' || statusobject.status === 'onprogress' || statusobject.status === 'finish'"
                     v-on:click= "changebackward(task.taskid, task.taskdetail)" > {{ statusobject.backwardbutton }}</button>
                 <button type="button" class="btn btn-info"
+                    data-toggle="modal" data-target="#detailModal"
                     v-on:click="getdetailtask(task.taskdetail)">Detail</button>
                 <button class="btn btn-success"
                     v-if= "statusobject.status === 'plan' || statusobject.status === 'start' || statusobject.status === 'onprogress'"
